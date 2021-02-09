@@ -1,0 +1,3 @@
+SELECT courses.name, teachers.name FROM courses FULL OUTER JOIN teachers ON courses.teacher_id=teachers.id;
+SELECT teachers.name FROM courses LEFT JOIN teachers ON courses.teacher_id=teachers.id GROUP BY courses.teacher_id HAVING COUNT(*)=(SELECT MAX(course_count) FROM (SELECT COUNT(*) course_count FROM courses GROUP BY teacher_id));
+SELECT teachers.name FROM teachers LEFT JOIN courses ON courses.teacher_id=teachers.id WHERE courses.name IS NULL;
